@@ -4,6 +4,10 @@ A [dsh](https://github.com/deepseek-ai/deepseek-harness) web client plugin that 
 
 It is a browser-only (`dsh.client`) bundle — no host service, no tool, no prompt change. It registers into the `conversation.session.header.utilities` slot that the dsh web bundle already declares, so it composes into the shipped UI without any repo change.
 
+![image-20260823211437608](C:\Users\Peng Liang\AppData\Roaming\Typora\typora-user-images\image-20260823211437608.png)
+
+![image-20260823211502595](C:\Users\Peng Liang\AppData\Roaming\Typora\typora-user-images\image-20260823211502595.png)
+
 ## Install
 
 Two ways, mirroring other dsh plugins. Both need the dsh CLI on `PATH`.
