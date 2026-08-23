@@ -27,8 +27,8 @@ A git install fetches **sources**, which is fine here: this repo commits its bui
 ## Use
 
 1. Restart the profile: `dsh --profile web`.
-2. Open a session. A toggle appears in the header's right utility row (beside the title). Click it to expand the navigator; it lists every user input in conversation order with a one-line preview.
-3. Click an entry to scroll the transcript to that message.
+2. Open a session with at least two of your own inputs. A rail of short dashes appears on the right edge, vertically centered — one dash per user input, in conversation order (first at top). The last input's dash is selected (blue) by default.
+3. Hover the rail to expand a panel where each input becomes a `text + dash` row; click a row to scroll the transcript to that message and mark its dash selected.
 
 ## How it works
 
@@ -47,6 +47,27 @@ npm run typecheck             # validates src/ against the dsh type sources
 ```
 
 `tsconfig.json` extends `../../deepseek-harness/tsconfig.base.client.json` so `@deepseek-ai/*` resolves to real type sources; point `extends` at your dsh checkout if it lives elsewhere. The build itself uses esbuild and does not need the checkout.
+
+## Releasing a new version
+
+Both install paths above resolve the same package, so every release means bumping, pushing, and publishing in one sweep:
+
+```sh
+# 1. Bump the version in package.json (semver: 0.1.1, 0.2.0, …)
+# 2. Rebuild and commit lib/ (kept in git so GitHub installs need no build)
+npm run build
+git add -A
+git commit -m "Release v<version>"
+git push origin main
+# 3. Publish to npm (prepack also rebuilds lib/)
+npm publish --access public --registry https://registry.npmjs.org/
+```
+
+Notes:
+
+- Publishing needs npm auth plus either an OTP (append `--otp <code>`) or a granular access token with **Bypass two-factor authentication** enabled. `--access public` is required because scoped packages default to private.
+- If your npm `registry` is a read-only mirror (e.g. npmmirror), log in and publish against `https://registry.npmjs.org/` explicitly, as above.
+- `lib/` is generated; always rebuild before committing so the committed artifact matches `src/`.
 
 ## Model Experience
 
