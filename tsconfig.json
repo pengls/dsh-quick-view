@@ -1,0 +1,18 @@
+{
+  // Dev/editor typecheck config. It extends the dsh client base so @deepseek-ai/*
+  // resolves to real type sources (the repo's tsconfig paths map). The build does
+  // NOT use this (esbuild transpiles without typechecking); it is what `npm run
+  // typecheck` and the editor use. Requires a sibling dsh source checkout at
+  // ../../deepseek-harness (adjust `extends` if your checkout lives elsewhere).
+  "extends": "../../deepseek-harness/tsconfig.base.client.json",
+  "compilerOptions": {
+    "composite": false,
+    "incremental": false,
+    "declaration": false,
+    "declarationMap": false,
+    "noEmit": true,
+    "types": []
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["node_modules", "lib"]
+}

@@ -1,0 +1,9 @@
+# The dsh-quick-view bundle patch: one browser (client) plugin row.
+#
+# It is a dsh.client package (browser bundle served by the client-modules node
+# half), so the row is a `name:` reference that the modules node half scans
+# into window.__DSH_BOOT__. Nothing else — a browser surface contributes UI by
+# registering into slots that the web bundle already declares.
+- insert:
+    - id: dsh-quick-view
+      name: '@pengls/dsh-quick-view'

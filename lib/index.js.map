@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../src/index.ts"],
+  "sourcesContent": ["/**\n * dsh-quick-view, node half.\n *\n * Deliberately empty: this bundle is a browser (client) plugin. The surface is\n * pure UI \u2014 it registers into slot seats the dsh web bundle already declares\n * \u2014 so there is no host-side service, tool, or composition to mount here. The\n * `dsh.client` declaration in package.json makes the host Loader scan the\n * browser bundle into window.__DSH_BOOT__; this node half only has to be a\n * valid cordis plugin entry so the row activates.\n */\nexport function apply(): void {}\n"],
+  "mappings": ";AAUO,SAAS,QAAc;AAAC;",
+  "names": []
+}
